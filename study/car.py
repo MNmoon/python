@@ -27,32 +27,8 @@ class Car(object):
     '''update odometer_readings'''
     self.odometer_reading += miles
 
-'''创建子类时，父类必须包含在当前文件中，且位于子类前面'''
-
-class ElectricCar(Car):
-  def __init__(self,make,model,year):
-    #init father class
-    super(ElectricCar,self).__init__(make,model,year)
+  def fill_gas_tank():
+    """电动汽车没有油箱"""
+    print("This car doesn't need a gas tank!")
 
 
-
-if __name__ == '__main__':
-  '''
-  car = Car('audi','A4','20170731')
-  car.get_describe_name()
-  car.read_odometer()
-  #use instance method to modify attribute
-  car.odometer_reading = 13732
-  car.read_odometer()
-
-  #use class method to modify attribute
-  car.modify_odometer_reading(22321)
-  car.read_odometer() 
-
-  #Use incremental methods to modify attribute
-  car.incremetal_odometer(100)
-  car.read_odometer() 
-  '''
-  Ecar = ElectricCar('audi','A4','20170731')
-  Ecar.get_describe_name()
-  

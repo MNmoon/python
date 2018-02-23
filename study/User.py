@@ -27,8 +27,22 @@ class User():
     self.login_attempts = 0
     print 'the vaule of login_attempts is ',self.login_attempts
 
-if __name__ == '__main__':
 
+
+class Admin(object):
+  privileges = ['can add post','can delete post','can ban user']
+  def __init__(self,privileges)
+    self.privileges = privileges
+  
+  def show_privileges(self):
+    for i in range(privileges)
+      print privileges[i]
+
+
+
+
+if __name__ == '__main__':
+  '''
   user = User('zhang','yanxi','1','men')
   user.describe_user()
   user.greet_user()
@@ -36,4 +50,13 @@ if __name__ == '__main__':
   user.increment_login_attempts()
   user.increment_login_attempts()
   user.reset_login_attempts()
+  '''
+
+
+
+
+
+
+
+
   
