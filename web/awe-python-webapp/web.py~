@@ -1,0 +1,85 @@
+#首页
+@get('/')
+def index():
+  return '<h1>Index page</h1>'
+
+#带参数的URL
+@get('/user/:id')
+def show_user(id):
+  user = User.get(id)
+  return 'hello,%s' % user.name
+
+#Web框架要支持URL拦截器，我们就可以根据URL做权限检查
+@interceptor('/manage/')
+def check_manage_url(next):
+  if current_user.isAdmin():
+    return next()
+  else:
+    raise seeother('/signin')
+
+#要统一模板的接口，函数可以返回dict并配合@view来渲染模板
+@view('index.html')
+@get('/')
+def index():
+  return dict(blogs=get_recent_blogs(),user=get_current_user())
+
+#如果需要从form表单或者URL的querystring获取用户输入的数据，就需要访问request对象，如果要设置特定的Content-Type、设置#Cookie等，就需要访问response对象。request和response对象应该从一个唯一的ThreadLocal中获取：
+@get('/test')
+def test():
+  input_data = ctx.request.input()
+  ctx.reponse.content_type = 'text/plain'
+  ctx.reponse.set_cookie('name','value',expires=3600)
+  return 'result'
+
+#如果需要重定向、或者返回一个HTTP错误码，最好的方法是直接抛出异常，例如，重定向到登陆页
+raise seeother('/signin')
+
+raise notfound()
+
+
+
+#基于以上接口，我们就可以实现Web框架了
+
+#全局ThreadLocal对象
+ctx = threading.local()
+
+#http 错误类
+class HttpError(Exception):
+  pass
+
+#request对象
+class Request(object):
+  #根据key返回value
+  def get(self,key,default=None)
+    pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
