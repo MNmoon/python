@@ -38,7 +38,7 @@ if __name__ == '__main__':
   print restaurant.number_served
   restaurant.set_number_served(10)
   '''
-  #ice = IceCreamStand('Queen','iceCream',[a,b,c,d])
-  #ice.diplay_iceCream()
+  ice = IceCreamStand('Queen','iceCream',[a,b,c,d])
+  ice.diplay_iceCream()
   
   
